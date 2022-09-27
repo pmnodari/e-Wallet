@@ -1,0 +1,333 @@
+:root {
+    --primario: #6834a6;
+    --blanco: #FFF;
+    --negro: #000000;
+    --fuentePrincipal: 'Poppins', sans-serif;
+}
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    font-family: var(--fuentePrincipal);
+    font-size: 1.6rem;
+    line-height: 1.8;
+}
+h1, h2, h3 {
+    font-weight: 900;
+    margin: 2rem 0;
+}
+h1 {
+    font-size: 5rem;
+}
+h2 {
+    font-size: 4.6rem;
+}
+h3 {
+    font-size: 3rem;
+}
+a {
+    text-decoration: none;
+}
+img {
+    max-width: 100%;
+    display: block;
+}
+[class$="__contenedor"] {
+    max-width: 120rem;
+    margin: 0 auto;
+    width: 90%;
+}
+[class$="__heading"]{
+    text-align: center;
+    font-size: 5rem;
+}
+/* Enfoque de menor pantalla a mayor */
+/* Header */
+
+.header{
+    background-image: url(../img/header_bg.svg);
+    background-repeat: no-repeat;
+    background-position: top right;background-size: 10rem;
+    padding: 5rem 0;
+}
+/* Aplicamos mq al background */
+@media (min-width: 768px) {
+    .header{
+        background-size: 55rem;
+    }    
+}
+@media (min-width: 992px) {
+    .header{
+        background-size: 75rem;
+    }    
+}
+@media (min-width: 1280px) {
+    .header{
+        background-size: 100rem;
+    }    
+}
+/* .header__contenedor{
+    max-width: 120rem;
+    margin: 0 auto;
+    width: 90%;
+} */
+@media (min-width: 768px) {
+    .header__barra{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+.header__logo{
+    width: 15rem;
+    margin: 0 auto 3rem auto;
+}
+@media (min-width: 768px) {
+    .header__logo{
+        margin: 0;
+    }    
+}
+
+/*Navegacion-> Tiene su propio bloque ya que el mismo puede ser reutilizado.  */
+.navegacion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@media (min-width: 768px) {
+    .navegacion{
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 2rem;
+    }    
+}
+.navegacion__link{
+    color: var(--primario);
+}
+@media (min-width: 768px) {
+    .navegacion__link{
+        color: var(--blanco);
+        font-weight: 500;
+    }
+    
+}
+/* Contenido Central del Header */
+@media (min-width: 768px) {
+    .header__grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        gap: 4rem;
+    }
+}
+
+/* .header__texto{
+    
+} */
+.header__heading{
+    font-size: 3rem;
+   /*  text-align: center; */
+}
+@media (min-width: 768px) {
+    .header__heading{
+        /* font-size: 5rem; */
+        text-align: left;
+        line-height: 1.2;
+    }
+    
+}
+.header__boton{
+    display: block;
+    background-color: var(--primario);
+    color: var(--blanco);
+    padding: 1rem;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+@media (min-width: 768px) {
+    .header__boton{
+        display: inline-block;
+        padding: 1rem 3rem;
+    }
+}
+/* .header__grafico{
+
+} */
+@media (min-width: 768px) {
+    .header__imagen{
+        max-width: 30rem;
+        margin: 0 auto;/* Centramos la imagen */
+    }
+}
+/* Que es? */
+.nucleus{
+    margin-top: 3rem;
+}
+/* .nucleus__heading{
+    text-align: center;
+    margin-bottom: 5rem;
+} */
+/* 
+.nucleus__contenedor y .header__contenedor llevan el mismo codigo, y esto es algo que se trata de evitar.
+Posible solución:
+1-Llamar la solo contenedor, para que constituya un bloque reutilizable.
+2-Usar el atributo: [class$="__contenedor"] -> Lo que hace este codigo es a todas las clases que utilizan al final de su nombre "__contenedor" se le aplica el codigo descripto. Este es el que utilizaremos en este proyecto.
+*/
+/* Mostramos primero el texto y luego la imagen en dispositivo pequeños */
+.nucleus__grid{
+    display: flex;
+    flex-direction: column-reverse;
+}
+@media (min-width: 768px) {
+    .nucleus__grid{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 5rem;
+        align-items: center;
+    } 
+}
+.listado__elemento{
+    background-color: var(--blanco);/* Fondo blanco en las card de seguridad */
+    box-shadow: 0px 0px 15px 3px rgb(0 0 0 /.30);
+    /* Los primeros dos valores manejan ala direccion de la sombra, luego cuanto se expande, la dureza o grosor y por ultimo el color de la sombra. */
+    padding: 2rem;
+    margin-bottom: 5rem;
+    transition-property: transform ;
+    transition-duration: 0.4s;
+}
+/* Animacion: cambia la escala o tamaño de la tarjeta */
+.listado__elemento:hover{
+    transform: scale(1.1);
+}
+/* Para la seccion comisiones */
+@media (min-width: 768px) {
+    .listado__elemento--2col{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+    }
+}
+
+/* Fin seccion comisiones */
+.listado__heading{
+    color: var(--primario);
+    font-size: 3rem;
+    margin: 0;
+}
+/* Para la seccion comisiones */
+.listado__numero{
+    color: var(--primario);
+    font-size: 6rem;
+    margin: 0;
+    font-weight: 900;
+    text-align: center;
+}
+@media (min-width: 768px) {
+    .listado__numero{
+        flex-basis: 20rem;
+        text-align: right;
+        font-size: 4rem;
+    }
+}
+/* Fin seccion comisiones */
+.listado__texto{
+    margin: 0;
+    font-size: 2rem;
+
+}
+/* Seccion seguridad */
+.seguridad{
+    background-color: var(--primario);
+    position: relative;
+    /* Este bloque sera la referencia de los bloques hijos. */
+    padding: 20rem 0;
+    margin: 10rem 0;
+    overflow: hidden;
+}
+/* Lineas diagonales */
+.seguridad::before,
+.seguridad::after{
+    background-color: var(--blanco);
+    content: '';
+    height: 20rem;
+    width: 120%;
+    position: absolute;
+}
+.seguridad::before{
+    top: -10rem;
+    left: 0;
+    transform: rotate(3deg);
+}
+.seguridad::after{
+    bottom: -10rem;
+    left: 0;
+    transform: rotate(3deg);
+}
+/* Fin lineas diagonales */
+.seguridad__heading{
+    /* text-align: center; */
+    color: var(--blanco);
+}
+@media (min-width: 768px) {
+    .seguridad__grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5rem;
+        align-items: center;
+    }    
+}
+/* Para realizar el efecto de las diagonales se puede utilizar la propiedad transform: rotate(3deg), y en la clase seguridad__contenedor volver la rotacion a -3deg. Esto permitira generar el efecto, y luego ir jugando con los valores de margin para scale para acomodar. Pero esta forma es anticuada y no la utilizaremos.
+.seguridad{ 
+    transform: rotate(3deg) scale(1.3);
+    margin-top: 20rem; 
+}
+.seguridad__contenedor{
+    transform: rotate(-3deg) scale(0.8);
+} 
+Usaremos las propiedades position absolute y relative, como asi los ::before y ::after
+Los pseudo-elementos ::before y ::after insertan contenido, mediante CSS, delante ( before ) y respectivamente detrás ( after ) del contenido de un elemento html.
+li::before{ content: "contenido";}
+Los pseudo-elementos tienen que tener un contenido aunque sea solo una cadena de texto vacía.
+li::before{ content: "";}
+Y lo mejor es que podemos dar formado a estos pseudo-elementos mediante CSS.
+una cadena de texto: li::before { content: "texto";}
+una imagen: li::before { content: url(flecha.gif);}
+un contador: li::before { content: counter(index);}
+el valor de un atributo: p::before { content: attr(title);}
+
+*/
+/* Seccion Comisiones */
+@media (min-width: 768px) {
+    .comisiones__grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5rem;
+        align-items: flex-end;
+        /* Impedir que la imagen quede flotando, y a medida que se achica la resolucion los elemento vayan hacia abajo.
+        */
+    }    
+}
+@media (min-width: 992px) {
+    .comisiones__grid{
+        align-items: center;
+    }
+}
+.comisiones__texto{
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+@media (min-width: 768px) {
+    .comisiones__texto{
+        text-align: left;
+    }
+    
+}
+
+
+
+
